@@ -20,7 +20,7 @@ function createMainWindow() {
 		height: 600,
 		resizable: false,
 		fullscreen: false,
-		titleBarStyle: 'hidden',
+		titleBarStyle: 'hidden-inset',
 		webPreferences: {
 			javascript: true
 		}
