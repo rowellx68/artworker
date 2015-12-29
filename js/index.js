@@ -1,1 +1,35 @@
-alert('Yay');
+'use strict';
+const remote = require('electron').remote;
+const dialog = remote.dialog;
+
+function displayError(errorMessage, errorDetail) {
+  dialog.showMessageBox({
+    type: 'error',
+    title: 'Error',
+    message: errorMessage,
+    detail: errorDetail,
+    buttons: ['OK']
+  });
+}
+
+function closeModal() {
+  $('.search-modal-overlay').addClass('animated slideOutUp');
+  $('.search-modal-overlay').one('webkitAnimationEnd', function() {
+    $(this).removeClass('animated slideInDown slideOutUp').hide();
+  });
+
+  $('.search-modal').addClass('animated slideOutDown');
+  $('.search-modal').one('webkitAnimationEnd', function() {
+    $(this).removeClass('animated slideInUp slideOutDown').hide();
+  });
+}
+
+$('.button.search').on('click', function(ev) {
+  ev.preventDefault();
+  $('.search-modal-overlay').addClass('animated slideInDown').show();
+  $('.search-modal').addClass('animated slideInUp').show();
+});
+
+$('.search-modal-overlay').on('click', function() {
+  closeModal();
+});

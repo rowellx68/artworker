@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Artworker</title>
-		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="./css/progress.css">
+		<link rel="stylesheet" href="./css/index.css">
+		<link rel="stylesheet" href="./bower_components/animate.css/animate.min.css">
 		<script>
 			var $ = require('./bower_components/jquery/dist/jquery.min.js');
 			var Mustache = require('./bower_components/mustache.js/mustache.min.js');
@@ -12,14 +14,32 @@
 	</head>
 	<body>
 		<div class="container">
-			<header>
+			<header class="main-bar thin-font">
 				Artworker
 			</header>
-			<section class="main"></section>
-			<footer></footer>
-			<script>
-				require('./js/index.js');
-			</script>
+
+			<section class="main">
+				<div class="progress">
+				  <div class="indeterminate"></div>
+				</div>
+				<div class="splash-message">
+					Start searching...
+				</div>
+			</section>
+
+			<section class="search-modal-container">
+				<div class="search-modal-overlay"></div>
+				<div class="search-modal">
+					pill buttons and other stuff here
+				</div>
+			</section>
+
+			<footer class="main-bar">
+				<a href="#" class="button search">Search</a>
+			</footer>
 		</div>
+		<script>
+			require('./js/index.js');
+		</script>
 	</body>
 </html>

@@ -1,0 +1,137 @@
+* {
+	font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
+	color: #2c3e50;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	cursor: default;
+	font-weight: 200;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+input[type=text] {
+	cursor: text;
+}
+
+.main-bar {
+	position: absolute;
+	width: 100vw;
+	height: 60px;
+	text-align: center;
+	z-index: 10;
+
+	background: #8e44ad;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.thin-font {
+	font-weight: 100;
+}
+
+.show {
+	display: block !important;
+}
+
+header {
+	top: 0;
+	font-size: 25px;
+	line-height: 25px;
+}
+
+footer {
+	bottom: 0;
+}
+
+.progress {
+	position: absolute;
+	height: 5px;
+	border-radius: 0;
+  background-color: #81e5ff;
+}
+
+.progress .indeterminate {
+  background-color: #3498db;
+}
+
+.main {
+	margin-top: 60px;
+	width: 100vw;
+	height: 480px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: relative;
+}
+
+.button {
+	transition: all 0.3s ease;
+	border: 1px #2c3e50 solid;
+	border-radius: 4px;
+	padding: 0.3em 0.7em;
+}
+
+.button:hover {
+	background: #2c3e50;
+	color: #fff;
+}
+
+.button.search {
+	border-color: #fff;
+	color: #fff;
+	width: 200px;
+}
+
+.button.search:hover {
+	background: #fff;
+	color: #8e44ad;
+}
+
+.splash-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+}
+
+.search-modal-overlay {
+	animation-duration: 0.2s !important;
+
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 50;
+	top: 0;
+	display: none;
+}
+
+.search-modal {
+	animation-duration: 0.3s !important;
+
+	position: absolute;
+	bottom: 0;
+	box-sizing: border-box;
+	height: 400px;
+	width: 360px;
+	padding: 20px;
+	z-index: 100;
+	overflow: hidden;
+	background: #fff;
+	margin: 0 20px;
+	display: none;
+}
