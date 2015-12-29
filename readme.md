@@ -6,7 +6,7 @@
 ## Dev
 
 ```
-$ npm install
+$ npm install && bower install
 ```
 
 ### Run
