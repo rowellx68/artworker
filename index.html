@@ -31,7 +31,8 @@
 			<section class="search-modal-container">
 				<div class="search-modal-overlay"></div>
 				<div class="search-modal">
-					<div class="media-type-container">
+
+					<div class="margin-bottom media-type-container">
 						<div class="pill-button-container">
 							<label for="album" class="pill-button selected">Album</label><label for="tv" class="pill-button">TV</label><label for="movie" class="pill-button">Movie</label>
 						</div>
@@ -40,6 +41,19 @@
 							<input type="radio" id="tv" name="media-type" value="tvSeason">
 							<input type="radio" id="movie" name="media-type" value="movie">
 						</span>
+					</div>
+
+					<div class="margin-bottom term-container">
+						<label for="search-term">Search Term</label>
+						<input type="text" name="search-term" value="">
+					</div>
+
+					<div class="margin-bottom country-container">
+						<label for="country">Country</label>
+						<select name="country">
+							<option value="gb">United Kingdom</option>
+							<option value="us">United States</option>
+						</select>
 					</div>
 				</div>
 			</section>
