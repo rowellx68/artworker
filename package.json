@@ -1,0 +1,43 @@
+{
+  "name": "artworker",
+  "productName": "Artworker",
+  "version": "0.0.1",
+  "description": "Artwork downloader",
+  "license": "MIT",
+  "repository": "rowellx68/artworker",
+  "author": {
+    "name": "Rowell Heria",
+    "email": "owieh@me.com",
+    "url": "rowell.heria.uk"
+  },
+  "electronVersion": "0.36.0",
+  "scripts": {
+    "test": "xo",
+    "start": "electron .",
+    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=darwin --arc=x64 --overwrite --version=$npm_package_electronVersion"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app",
+    "electron"
+  ],
+  "dependencies": {
+    "electron-debug": "^0.5.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.0.0",
+    "electron-prebuilt": "^0.36.0",
+    "xo": "^0.12.0"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
+}
