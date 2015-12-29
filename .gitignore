@@ -146,3 +146,4 @@ Temporary Items
 sftp-config.json
 
 bower_components/
+dist/

@@ -2,9 +2,6 @@
 const electron = require('electron');
 const app = electron.app;
 
-// report crashes to the Electron project
-require('crash-reporter').start();
-
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
 
@@ -21,7 +18,12 @@ function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: 400,
 		height: 600,
-		resizable: false
+		resizable: false,
+		fullscreen: false,
+		titleBarStyle: 'hidden',
+		webPreferences: {
+			javascript: true
+		}
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
