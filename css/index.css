@@ -44,6 +44,10 @@ input[type=text] {
 	margin-bottom: 1em;
 }
 
+.margin-bottom-double {
+	margin-bottom: 2em;
+}
+
 .thin-font {
 	font-weight: 100;
 }
@@ -92,6 +96,7 @@ footer {
 	border-radius: 4px;
 	padding: 0.3em 0.7em;
 	display: inline-block;
+	text-align: center;
 }
 
 .button:hover {
@@ -135,7 +140,7 @@ footer {
 	position: absolute;
 	bottom: 0;
 	box-sizing: border-box;
-	height: 400px;
+	height: 300px;
 	width: 360px;
 	padding: 30px 20px;
 	z-index: 100;
@@ -194,4 +199,28 @@ footer {
 .country-container select {
 	width: 100%;
 	font-size: 1em;
+}
+
+.search-cancel-container {
+	position: absolute;
+	display: block;
+	width: 320px;
+	box-sizing: border-box;
+	bottom: 30px;
+}
+
+.search-cancel-container .button {
+	width: 40%;
+}
+
+.search-cancel-container .search-artwork {
+	float: right;
+	background: #2ecc71;
+	color: #fff;
+	border-color: #27ae60;
+}
+
+.search-cancel-container .search-artwork:hover {
+	background: #27ae60;
+	color: #bdc3c7;
 }

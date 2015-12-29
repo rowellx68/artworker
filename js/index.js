@@ -38,3 +38,7 @@ $('.button.search').on('click', function(ev) {
 $('.search-modal-overlay').on('click', function() {
   closeModal();
 });
+
+$('.cancel-search').on('click', function() {
+  closeModal();
+});
