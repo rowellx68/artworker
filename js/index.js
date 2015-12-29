@@ -13,9 +13,9 @@ function displayError(errorMessage, errorDetail) {
 }
 
 function closeModal() {
-  $('.search-modal-overlay').addClass('animated slideOutUp');
+  $('.search-modal-overlay').addClass('animated slideOutDown');
   $('.search-modal-overlay').one('webkitAnimationEnd', function() {
-    $(this).removeClass('animated slideInDown slideOutUp').hide();
+    $(this).removeClass('animated slideInUp slideOutDown').hide();
   });
 
   $('.search-modal').addClass('animated slideOutDown');
@@ -26,7 +26,7 @@ function closeModal() {
 
 $('.button.search').on('click', function(ev) {
   ev.preventDefault();
-  $('.search-modal-overlay').addClass('animated slideInDown').show();
+  $('.search-modal-overlay').addClass('animated slideInUp').show();
   $('.search-modal').addClass('animated slideInUp').show();
 });
 
