@@ -136,7 +136,7 @@ footer {
 	padding: 20px;
 	z-index: 100;
 	overflow: hidden;
-	background: #fff;
+	background: #ecf0f1;
 	margin: 0 20px;
 	display: none;
 }
@@ -151,6 +151,7 @@ footer {
 	width: 33.33%;
 	box-sizing: border-box;
 	text-align: center;
+	cursor: pointer;
 }
 
 .pill-button.selected,

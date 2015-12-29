@@ -24,6 +24,11 @@ function closeModal() {
   });
 }
 
+$('.pill-button-container label').on('click', function() {
+  $('.pill-button-container label').removeClass('selected');
+  $(this).addClass('selected');
+});
+
 $('.button.search').on('click', function(ev) {
   ev.preventDefault();
   $('.search-modal-overlay').addClass('animated slideInUp').show();
