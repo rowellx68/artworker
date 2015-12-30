@@ -10,11 +10,14 @@
     "email": "owieh@me.com",
     "url": "rowell.heria.uk"
   },
-  "electronVersion": "0.36.0",
+  "electronVersion": "0.36.2",
   "scripts": {
     "test": "xo",
     "start": "electron .",
-    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=darwin --arch=x64 --overwrite --version=$npm_package_electronVersion"
+    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --overwrite --version=$npm_package_electronVersion",
+    "build-osx": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=darwin --arch=x64 --overwrite --version=$npm_package_electronVersion",
+    "build-win": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=win32 --arch=all --overwrite --version=$npm_package_electronVersion",
+    "build-winosx": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=darwin,win32 --arch=all --overwrite --version=$npm_package_electronVersion"
   },
   "files": [
     "index.js",

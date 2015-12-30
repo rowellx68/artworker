@@ -6,19 +6,26 @@
 ## Dev
 
 ```
-$ npm install && bower install
+npm install && bower install
 ```
 
 ### Run
 
 ```
-$ npm start
+npm start
 ```
 
 ### Build
 
 ```
-$ npm run build
+// for all platforms
+npm run build
+
+// for osx
+npm run build-osx
+
+// for windows
+npm run build-win
 ```
 
 Builds the app for OS X [electron-packager](https://github.com/maxogden/electron-packager).
