@@ -26,6 +26,9 @@
 				<div class="splash-message">
 					Start searching...
 				</div>
+				<div class="results">
+
+				</div>
 			</section>
 
 			<section class="search-modal-container">
@@ -36,7 +39,7 @@
 						<div class="pill-button-container">
 							<label for="album" class="pill-button selected">Album</label><label for="tv" class="pill-button">TV</label><label for="movie" class="pill-button">Movie</label>
 						</div>
-						<span class="hide">
+						<span class="hide media-types">
 							<input type="radio" id="album" name="media-type" value="album" checked>
 							<input type="radio" id="tv" name="media-type" value="tvSeason">
 							<input type="radio" id="movie" name="media-type" value="movie">
@@ -69,6 +72,24 @@
 		</div>
 		<script>
 			require('./js/index.js');
+		</script>
+
+		<script type="x-tmpl-mustache" id="result-item">
+			<div class="result-item">
+				<div class="artwork">
+					<img src="{{ artwork200 }}" alt="" height="100" />
+				</div>
+				<div class="details">
+					<p>{{ collectionName }}</p>
+					<div class="download-buttons">
+						<a href="{{ itunesUrl }}" class="button itunes">iTunes</a>
+						<a href="#" class="button standard" data-image-url="{{ artwork600 }}">Standard</a>
+						{{ #highResAvailable }}
+							<a href="#" class="button high-res" data-image-url="{{ artwork000 }}">High Res</a>
+						{{ /highResAvailable }}
+					</div>
+				</div>
+			</div>
 		</script>
 	</body>
 </html>
