@@ -2,6 +2,12 @@
 const remote = require('electron').remote;
 const dialog = remote.dialog;
 
+function hideScrollbar() {
+  if (process.platform === 'win32') {
+    $('.main').addClass('main-no-scrollbar');
+  }
+}
+
 function displayError(errorMessage, errorDetail) {
   dialog.showMessageBox({
     type: 'error',
@@ -23,6 +29,8 @@ function closeModal() {
     $(this).removeClass('animated slideInUp slideOutDown').hide();
   });
 }
+
+hideScrollbar();
 
 $('.pill-button-container label').on('click', function() {
   $('.pill-button-container label').removeClass('selected');

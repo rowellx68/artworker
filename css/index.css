@@ -90,6 +90,10 @@ footer {
 	position: relative;
 }
 
+.main-no-scrollbar::-webkit-scrollbar {
+	width: 0 !important;
+}
+
 .button {
 	transition: all 0.3s ease;
 	border: 1px #2c3e50 solid;
@@ -141,12 +145,11 @@ footer {
 	bottom: 0;
 	box-sizing: border-box;
 	height: 300px;
-	width: 360px;
+	width: 100vw;
 	padding: 30px 20px;
 	z-index: 100;
 	overflow: hidden;
 	background: #ecf0f1;
-	margin: 0 20px;
 	display: none;
 }
 
@@ -202,11 +205,10 @@ footer {
 }
 
 .search-cancel-container {
-	position: absolute;
 	display: block;
-	width: 320px;
+	width: 100%;
 	box-sizing: border-box;
-	bottom: 30px;
+	margin-top: 40px;
 }
 
 .search-cancel-container .button {
