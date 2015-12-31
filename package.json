@@ -1,7 +1,7 @@
 {
   "name": "artworker",
   "productName": "Artworker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Artwork downloader",
   "license": "MIT",
   "repository": "rowellx68/artworker",

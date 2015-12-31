@@ -163,21 +163,27 @@ function itunesButtonEvent() {
 function downloadButtonEvent() {
   $('.download-artwork').on('click', function(ev) {
     ev.preventDefault();
-    $('.progress').show();
 
-    let imageUrl = $(this).data('image-url');
-    let imageName = $(this).data('image-name');
-    let imageQuality = $(this).data('image-quality');
+    var imageUrl = $(this).data('image-url');
+    var imageName = $(this).data('image-name');
+    var imageQuality = $(this).data('image-quality');
 
     imageName += '-' + imageQuality + '.jpg';
 
-    let imagePath = dialog.showSaveDialog({
-      title: 'Save Album Art',
-      defaultPath: remote.app.getPath('downloads') + '/' + imageName
-    });
+    $('.progress').show(function () {
 
-    request(imageUrl, downloadImage).pipe(fs.createWriteStream(imagePath));
-    $('.progress').hide();
+      let imagePath = dialog.showSaveDialog({
+        title: 'Save Album Art',
+        defaultPath: remote.app.getPath('downloads') + '/' + imageName,
+        callback: function(filename) {
+          if (!filename) {
+            $('.progress').hide();
+          }
+        }
+      });
+
+      request(imageUrl, downloadImage).pipe(fs.createWriteStream(imagePath));
+    });
   });
 }
 
@@ -190,6 +196,7 @@ function downloadImage(err, res) {
       displayError('High res image not available', 'It seems that a high resolution version is not available.');
     }
   }
+  $('.progress').hide();
 }
 
 hideScrollbar();
