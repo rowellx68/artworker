@@ -36,7 +36,9 @@ function displayMessage(string) {
 }
 
 function displayNoResult() {
+  $('.results').empty();
   displayMessage('No result for \'' + getSearchTerm() + '\'!');
+  $('.splash-message').show();
 }
 
 function generateSearchUrl() {
@@ -72,15 +74,47 @@ function parseSearchResult(err, res, body) {
     let searchResult = JSON.parse(body);
 
     if(searchResult.resultCount > 0) {
-      displayMessage(searchResult.results.length);
+      displayResult(searchResult.results);
     }
     else {
-      console.log(searchResult);
       displayNoResult();
     }
   }
 
   $('.progress').hide();
+}
+
+function displayResult(results) {
+  let template = $('#result-item').html();
+  Mustache.parse(template);
+
+  $('.splash-message').hide();
+  $('.results').empty();
+
+  for(let result of results) {
+    let collectionName = result.collectionName || result.trackName;
+    let artistName = result.artistName;
+    let itunesUrl = result.collectionViewUrl || result.trackViewUrl;
+    let imageUrl = cleanImageUrl(result.artworkUrl60);
+
+    let mustacheObj = {
+      collectionName: collectionName,
+      itunesUrl: itunesUrl,
+      artwork200: generateImageUrl(imageUrl, 200)
+    }
+
+    let html = Mustache.render(template, mustacheObj);
+
+    $('.results').append(html);
+  }
+}
+
+function cleanImageUrl(url) {
+  return url.replace('60x60bb.jpg', '');
+}
+
+function generateImageUrl(url, size) {
+  return url + size + 'x' + size + 'bb.jpg';
 }
 
 hideScrollbar();

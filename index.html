@@ -83,9 +83,9 @@
 					<p>{{ collectionName }}</p>
 					<div class="download-buttons">
 						<a href="{{ itunesUrl }}" class="button itunes">iTunes</a>
-						<a href="#" class="button standard" data-image-url="{{ artwork600 }}">Standard</a>
+						<a href="#" class="button standard" data-image-name="{{ collectionName }}" data-image-url="{{ artwork600 }}">Standard</a>
 						{{ #highResAvailable }}
-							<a href="#" class="button high-res" data-image-url="{{ artwork000 }}">High Res</a>
+							<a href="#" class="button high-res" data-image-name="{{ collectionName }}" data-image-url="{{ artwork000 }}">High Res</a>
 						{{ /highResAvailable }}
 					</div>
 				</div>
