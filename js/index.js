@@ -2,6 +2,7 @@
 const remote = require('electron').remote;
 const shell = remote.shell;
 const dialog = remote.dialog;
+const fs = require('fs');
 let request = require('request');
 
 function hideScrollbar() {
@@ -168,28 +169,27 @@ function downloadButtonEvent() {
     let imageName = $(this).data('image-name');
     let imageQuality = $(this).data('image-quality');
 
-    imageName += '-' + imageQuality;
+    imageName += '-' + imageQuality + '.jpg';
 
-    request(imageUrl, function(err, res, body) {
-      downloadImage(err, res, body, imageName);
+    let imagePath = dialog.showSaveDialog({
+      title: 'Save Album Art',
+      defaultPath: remote.app.getPath('downloads') + '/' + imageName
     });
+
+    request(imageUrl, downloadImage).pipe(fs.createWriteStream(imagePath));
+    $('.progress').hide();
   });
 }
 
-function downloadImage(err, res, body, imageName) {
+function downloadImage(err, res) {
   if (err) {
     displayError('An error has occured.', 'Please try again.');
   }
   else {
-    if (res.statusCode === 200) {
-      download(body, imageName + '.jpg', 'image/jpeg');
-    }
-    else {
+    if (res.statusCode !== 200) {
       displayError('High res image not available', 'It seems that a high resolution version is not available.');
     }
   }
-
-  $('.progress').hide();
 }
 
 hideScrollbar();
