@@ -29,7 +29,8 @@
     "electron"
   ],
   "dependencies": {
-    "electron-debug": "^0.5.0"
+    "electron-debug": "^0.5.0",
+    "request": "^2.67.0"
   },
   "devDependencies": {
     "electron-packager": "^5.0.0",

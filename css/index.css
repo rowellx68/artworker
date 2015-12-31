@@ -75,6 +75,7 @@ footer {
 	height: 5px;
 	border-radius: 0;
   background-color: #81e5ff;
+	display: none;
 }
 
 .progress .indeterminate {
