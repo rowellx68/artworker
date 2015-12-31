@@ -227,3 +227,53 @@ footer {
 	background: #27ae60;
 	color: #bdc3c7;
 }
+
+.result-item {
+	display: flex;
+	justify-content: flex-start;
+	width: 100vw;
+	height: 100px;
+	overflow: hidden;
+}
+
+.result-item:nth-child(odd) {
+	background: #ecf0f1;
+}
+
+.result-item .artwork {
+  height: 100px;
+	background: #bdc3c7;
+	overflow: hidden;
+}
+
+.result-item .details {
+	padding: 10px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.details {
+	position: relative;
+}
+
+.details p {
+	margin: 0;
+	font-size: 14px;
+}
+
+.download-buttons {
+	position: absolute;
+	bottom: 10px;
+}
+
+.download-buttons .button {
+	text-transform: uppercase;
+	font-size: 10px;
+}
+
+.download-buttons .itunes {
+	border-color: #000;
+	background: #000;
+	color: #fff;
+	text-transform: none;
+}

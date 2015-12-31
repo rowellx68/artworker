@@ -1,5 +1,6 @@
 'use strict';
 const remote = require('electron').remote;
+const shell = remote.shell;
 const dialog = remote.dialog;
 let request = require('request');
 
@@ -75,6 +76,7 @@ function parseSearchResult(err, res, body) {
 
     if(searchResult.resultCount > 0) {
       displayResult(searchResult.results);
+      closeModal();
     }
     else {
       displayNoResult();
@@ -96,17 +98,24 @@ function displayResult(results) {
     let artistName = result.artistName;
     let itunesUrl = result.collectionViewUrl || result.trackViewUrl;
     let imageUrl = cleanImageUrl(result.artworkUrl60);
+    let minWidth = getMediaType() === 'movie' ? 67 : 100;
 
     let mustacheObj = {
       collectionName: collectionName,
-      itunesUrl: itunesUrl,
-      artwork200: generateImageUrl(imageUrl, 200)
+      itunesUrl: generateItunesUrl(itunesUrl),
+      artwork200: generateImageUrl(imageUrl, 200),
+      artwork600: generateImageUrl(imageUrl, 600),
+      artwork000: generateImageUrl(imageUrl, 10000),
+      highResAvailable: highResAvailable(imageUrl),
+      minWidth: minWidth
     }
 
     let html = Mustache.render(template, mustacheObj);
 
     $('.results').append(html);
   }
+
+  attachClickEvents();
 }
 
 function cleanImageUrl(url) {
@@ -115,6 +124,72 @@ function cleanImageUrl(url) {
 
 function generateImageUrl(url, size) {
   return url + size + 'x' + size + 'bb.jpg';
+}
+
+function attachClickEvents() {
+  itunesButtonEvent();
+  downloadButtonEvent();
+}
+
+function generateItunesUrl(url) {
+  if (process.platform === 'darwin') {
+    let newUrl = url.replace('https://', 'itms://geo.');
+    newUrl = newUrl.split('?')[0];
+    newUrl += '?app=itunes';
+
+    return newUrl;
+  }
+  else {
+    return url;
+  }
+}
+
+function highResAvailable(url) {
+  let regMusic = /\/thumb\/Music[0-9]/g;
+  let regVideo = /\/thumb\/Video/g;
+
+  return regMusic.exec(url) != null || regVideo.exec(url) != null;
+}
+
+function itunesButtonEvent() {
+  $('.button.itunes').on('click', function(ev) {
+    ev.preventDefault();
+    let url = $(this).data('url');
+    shell.openExternal(url);
+  });
+}
+
+function downloadButtonEvent() {
+  $('.download-artwork').on('click', function(ev) {
+    ev.preventDefault();
+    $('.progress').show();
+
+    let imageUrl = $(this).data('image-url');
+    let imageName = $(this).data('image-name');
+    let imageQuality = $(this).data('image-quality');
+
+    imageName += '-' + imageQuality;
+
+    request(imageUrl, function(err, res, body) {
+      downloadImage(err, res, body, imageName);
+    });
+  });
+}
+
+function downloadImage(err, res, body, imageName) {
+  if (err) {
+    displayError('An error has occured.', 'Please try again.');
+  }
+  else {
+    if (res.statusCode === 200) {
+      download(body, imageName + '.jpg', 'image/jpeg');
+    }
+    else {
+      displayError('High res image not available', 'It seems that a high resolution version is not available.');
+    }
+  }
+
+  $('.progress').hide();
 }
 
 hideScrollbar();

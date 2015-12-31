@@ -76,16 +76,16 @@
 
 		<script type="x-tmpl-mustache" id="result-item">
 			<div class="result-item">
-				<div class="artwork">
+				<div class="artwork" style="min-width: {{ minWidth }}px; max-width: {{ minWidth }}px;">
 					<img src="{{ artwork200 }}" alt="" height="100" />
 				</div>
 				<div class="details">
 					<p>{{ collectionName }}</p>
 					<div class="download-buttons">
-						<a href="{{ itunesUrl }}" class="button itunes">iTunes</a>
-						<a href="#" class="button standard" data-image-name="{{ collectionName }}" data-image-url="{{ artwork600 }}">Standard</a>
+						<a href="#" data-url="{{ itunesUrl }}" class="button itunes">iTunes</a>
+						<a href="#" class="button download-artwork" data-image-quality="SD" data-image-name="{{ collectionName }}" data-image-url="{{ artwork600 }}">Standard</a>
 						{{ #highResAvailable }}
-							<a href="#" class="button high-res" data-image-name="{{ collectionName }}" data-image-url="{{ artwork000 }}">High Res</a>
+							<a href="#" class="button download-artwork high-res" data-image-quality="HD" data-image-name="{{ collectionName }}" data-image-url="{{ artwork000 }}">High Res</a>
 						{{ /highResAvailable }}
 					</div>
 				</div>
